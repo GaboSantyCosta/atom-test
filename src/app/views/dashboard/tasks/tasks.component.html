@@ -1,0 +1,75 @@
+<div class="task-container">
+  <div class="content"></div>
+  <div class="content task-form">
+    <div class="form-card">
+      <h4>Add Task</h4>
+      <form [formGroup]="taskForm" (ngSubmit)="createTaskSubmit()">
+        <mat-form-field>
+          <mat-label>Title</mat-label>
+          <input formControlName="title" matInput>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Description</mat-label>
+          <input formControlName="description" matInput>
+        </mat-form-field>
+        <button [disabled]="taskForm.invalid" matButton="filled">{{selectedTask ? 'Update' : 'Add'}}</button>
+      </form>
+    </div>
+  </div>
+  <div class="content drag-and-drop" cdkDropListGroup>
+
+    <div class="task-type">
+      <h2>Pending</h2>
+      <div
+        id="pendingList"
+        cdkDropList
+        [cdkDropListData]="pending"
+        class="task-card"
+        (cdkDropListDropped)="drop($event)">
+        <div class="card-item" *ngFor="let task of pending" cdkDrag>
+          <strong>{{ task.title }}</strong>
+          <span>{{ task.description }}</span>
+          <span>{{ task.createAt | date }}</span>
+          <a (click)="selectTask(task)">Editar</a>
+          <mat-icon (click)="deleteTask(task,0)" aria-hidden="false" aria-label="Example home icon" fontIcon="close_small"></mat-icon>
+        </div>
+      </div>
+    </div>
+
+    <div class="task-type">
+      <h2>In Progress</h2>
+      <div
+        id="inProgressList"
+        cdkDropList
+        [cdkDropListData]="inProgress"
+        class="task-card"
+        (cdkDropListDropped)="drop($event)">
+        <div class="card-item" *ngFor="let task of inProgress" cdkDrag>
+          <strong>{{ task.title }}</strong>
+          <span>{{ task.description }}</span>
+          <a (click)="selectedTask = task">Editar</a>
+          <mat-icon (click)="deleteTask(task,1)" aria-hidden="false" aria-label="Example home icon" fontIcon="close_small"></mat-icon>
+        </div>
+      </div>
+    </div>
+    
+    <div class="task-type">
+      <h2>Done</h2>
+      <div
+        id="doneList"
+        cdkDropList
+        [cdkDropListData]="done"
+        class="task-card"
+        (cdkDropListDropped)="drop($event)">
+        <div class="card-item" *ngFor="let task of done" cdkDrag>
+          <strong>{{ task.title }}</strong>
+          <span>{{ task.description }}</span>
+          <a (click)="selectedTask = task">Editar</a>
+          <mat-icon (click)="deleteTask(task,2)" aria-hidden="false" aria-label="Example home icon" fontIcon="close_small"></mat-icon>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="content"></div>
+</div>

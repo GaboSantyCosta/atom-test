@@ -1,0 +1,9 @@
+<h1>Hello</h1>
+<div>
+  <label id="user-name">Seems like you don't have an account yet, you want to create a new one?</label>
+  <input for="user-name" [(ngModel)]="data.name" placeholder="Enter your name">
+</div>
+<div>
+  <button [disabled]="!data.name" (click)="dialogRef.close(data.name)">OK</button>
+  <button (click)="dialogRef.close()">Cancel</button>
+</div>

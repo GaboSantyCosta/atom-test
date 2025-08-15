@@ -1,0 +1,16 @@
+<div class="login-form">
+    <h4>Welcome to Atom tasks</h4>
+    <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
+        <mat-form-field class="example-full-width">
+            <mat-label>User</mat-label>
+            <input formControlName="user" name="user" type="text" matInput>
+        </mat-form-field>
+      
+        <mat-form-field class="example-full-width">
+            <mat-label>Password</mat-label>
+            <input formControlName="password" name="password" [type]="showPassword ? 'password' : 'text'" matInput>
+            <mat-icon (click)="toogleShowPassword()" matSuffix>{{showPassword ? 'visibility' : 'visibility_off'}}</mat-icon>
+        </mat-form-field>
+        <button [disabled]="loginForm.invalid" matButton="filled">Ingresar</button>
+      </form>
+</div>
