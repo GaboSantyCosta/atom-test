@@ -1,7 +1,7 @@
 <mat-toolbar>
     <span>Atom Tasks</span>
     <span class="menu-spacer"></span>
-    <span *ngIf="userService.user$ | async; let user">Welcome, {{user.name}}</span>
+    <span *ngIf="userService.user$ | async; let user">Hi, {{user.name}}</span>
     <button (click)="logout()" matIconButton aria-label="Logout icon-button">
       <mat-icon>logout</mat-icon>
     </button>

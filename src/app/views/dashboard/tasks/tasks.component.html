@@ -27,10 +27,14 @@
         class="task-card"
         (cdkDropListDropped)="drop($event)">
         <div class="card-item" *ngFor="let task of pending" cdkDrag>
-          <strong>{{ task.title }}</strong>
-          <span>{{ task.description }}</span>
-          <span>{{ task.createAt | date }}</span>
-          <a (click)="selectTask(task)">Editar</a>
+          <div class="card-text">
+            <strong>{{ task.title }}</strong>
+            <span>{{ task.description }}</span>
+            <small>{{ task.createAt | date }}</small>
+          </div>
+          <div class="card-actions">
+            <a (click)="selectTask(task)">Editar</a>
+          </div>
           <mat-icon (click)="deleteTask(task,0)" aria-hidden="false" aria-label="Example home icon" fontIcon="close_small"></mat-icon>
         </div>
       </div>
@@ -45,10 +49,15 @@
         class="task-card"
         (cdkDropListDropped)="drop($event)">
         <div class="card-item" *ngFor="let task of inProgress" cdkDrag>
-          <strong>{{ task.title }}</strong>
-          <span>{{ task.description }}</span>
-          <a (click)="selectedTask = task">Editar</a>
-          <mat-icon (click)="deleteTask(task,1)" aria-hidden="false" aria-label="Example home icon" fontIcon="close_small"></mat-icon>
+          <div class="card-text">
+            <strong>{{ task.title }}</strong>
+            <span>{{ task.description }}</span>
+            <small>{{ task.createAt | date }}</small>
+          </div>
+          <div class="card-actions">
+            <a (click)="selectTask(task)">Editar</a>
+          </div>
+          <mat-icon (click)="deleteTask(task,0)" aria-hidden="false" aria-label="Example home icon" fontIcon="close_small"></mat-icon>
         </div>
       </div>
     </div>
@@ -62,10 +71,15 @@
         class="task-card"
         (cdkDropListDropped)="drop($event)">
         <div class="card-item" *ngFor="let task of done" cdkDrag>
-          <strong>{{ task.title }}</strong>
-          <span>{{ task.description }}</span>
-          <a (click)="selectedTask = task">Editar</a>
-          <mat-icon (click)="deleteTask(task,2)" aria-hidden="false" aria-label="Example home icon" fontIcon="close_small"></mat-icon>
+          <div class="card-text">
+            <strong>{{ task.title }}</strong>
+            <span>{{ task.description }}</span>
+            <small>{{ task.createAt | date }}</small>
+          </div>
+          <div class="card-actions">
+            <a (click)="selectTask(task)">Editar</a>
+          </div>
+          <mat-icon (click)="deleteTask(task,0)" aria-hidden="false" aria-label="Example home icon" fontIcon="close_small"></mat-icon>
         </div>
       </div>
     </div>
