@@ -12,7 +12,7 @@ export const routes: Routes = [
         children: [
             {
                 path: 'tasks',
-                component: TasksComponent
+                loadComponent: () => import('./views/dashboard/tasks/tasks.component').then(m => m.TasksComponent)
             },
             {
                 path: '',
@@ -23,7 +23,7 @@ export const routes: Routes = [
     },
     {
         path: 'login',
-        component: LoginComponent
+        loadComponent: () => import('./views/login/login').then(m => m.LoginComponent)
     },
     {
         path: '**',

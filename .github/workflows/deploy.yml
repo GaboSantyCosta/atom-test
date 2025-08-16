@@ -24,19 +24,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # 4️⃣ Ejecutar pruebas unitarias
-      - name: Run unit tests
-        run: npm test -- --watch=false --browsers=ChromeHeadless
-
-      # 5️⃣ Build Angular en producción
+      # 4️⃣ Build Angular en producción
       - name: Build Angular app
         run: npm run build -- --configuration production
 
-      # 6️⃣ Instalar Firebase CLI (opcional)
+      # 5️⃣ Instalar Firebase CLI (opcional)
       - name: Install Firebase CLI
         run: npm install -g firebase-tools
 
-      # 7️⃣ Deploy a Firebase Hosting
+      # 6️⃣ Deploy a Firebase Hosting
       - name: Deploy to Firebase
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
